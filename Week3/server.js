@@ -1,4 +1,4 @@
-var express = require('express'); //used for routing
+var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var bodyParser = require('body-parser');

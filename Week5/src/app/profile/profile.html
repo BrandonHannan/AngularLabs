@@ -1,0 +1,27 @@
+<h2 class="accordion-header" id="editHeading">
+    Edit User Info
+</h2>
+
+<div id="editForm" class="accordion" aria-labelledby="editHeading" data-bs-parent="#editAccordion">
+    <div class="accordion-body">
+        <form (ngSubmit)="updateUser()" #editFormRef="ngForm">
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input type="text" class="form-control" [(ngModel)]="user.username" name="username">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Birthdate</label>
+                <input type="date" class="form-control" [(ngModel)]="user.birthdate" name="birthdate">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Age</label>
+                <input type="number" class="form-control" [(ngModel)]="user.age" name="age">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" [(ngModel)]="user.email" name="email">
+            </div>
+            <button type="submit" class="btn btn-success">Save Changes</button>
+        </form>
+    </div>
+</div>

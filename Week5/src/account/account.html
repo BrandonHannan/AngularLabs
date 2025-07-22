@@ -1,0 +1,20 @@
+<h3>Account Page</h3>
+<div class="container mt-4" *ngIf="user">
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+      <h5 class="mb-0">User Info: {{ user.username }}</h5>
+    </div>
+    <div class="card-body">
+      <p><strong>Username:</strong> {{ user.username }}</p>
+      <p><strong>Birthdate:</strong> {{ user.birthdate }}</p>
+      <p><strong>Age:</strong> {{ user.age }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-4" *ngIf="!user">
+  <div class="alert alert-warning">
+    No user data found. Please log in.
+  </div>
+</div>
