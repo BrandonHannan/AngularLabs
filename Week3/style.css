@@ -38,6 +38,13 @@ input[type="text"] {
     font-size: 14px;
 }
 
+input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
 label {
     font-weight: bold;
     margin-bottom: 5px;

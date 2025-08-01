@@ -1,13 +1,12 @@
 var express = require('express');
 var app = express();
 var http = require('http').Server(app);
-var bodyParser = require('body-parser');
 
 var accounts = [ {email: "test@email.com", pwd: "test"}, 
                  {email: "test1@email.com", pwd: "test1"}, 
                  {email: "test2@email.com", pwd: "test2"}];
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.use(express.static(__dirname + '/'));
 
