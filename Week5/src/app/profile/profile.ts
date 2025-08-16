@@ -16,7 +16,7 @@ export class Profile {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    const storedUserString = sessionStorage.getItem('loggedInUser');
+    const storedUserString = localStorage.getItem('loggedInUser');
     if (storedUserString) {
       this.user = JSON.parse(storedUserString);
     }
@@ -26,7 +26,7 @@ export class Profile {
   }
 
   updateUser(){
-    sessionStorage.setItem('loggedInUser', JSON.stringify(this.user));
+    localStorage.setItem('loggedInUser', JSON.stringify(this.user));
     this.router.navigateByUrl('/account');
   }
 

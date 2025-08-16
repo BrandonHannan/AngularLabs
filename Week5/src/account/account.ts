@@ -15,7 +15,7 @@ export class Account implements OnInit{
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    const storedUserString = sessionStorage.getItem('loggedInUser');
+    const storedUserString = localStorage.getItem('loggedInUser');
     if (storedUserString) {
       this.user = JSON.parse(storedUserString);
     }

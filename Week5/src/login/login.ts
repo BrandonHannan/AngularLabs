@@ -19,7 +19,7 @@ export class Login implements OnInit{
   constructor(private router: Router, private http: HttpClient) {}
 
   ngOnInit() {
-    const storedUserString = sessionStorage.getItem('loggedInUser');
+    const storedUserString = localStorage.getItem('loggedInUser');
     if (storedUserString) {
       this.router.navigateByUrl("/account");
     }
@@ -35,12 +35,12 @@ export class Login implements OnInit{
 
     this.http.post<any>(this.serverUrl + '/api/auth', userpwd).subscribe({
       next: (response) => {
-        sessionStorage.setItem('loggedInUser', JSON.stringify(response));
+        localStorage.setItem('loggedInUser', JSON.stringify(response));
         this.router.navigateByUrl("/account");
       },
       error: (err) => {
         this.errorMessage = "Invalid login credentials";
-        sessionStorage.removeItem('loggedInUser');
+        localStorage.removeItem('loggedInUser');
       }
     });
   }

@@ -11,7 +11,7 @@ export class App {
   protected readonly title = signal('week5');
   constructor(private router: Router) {}
   logOut(): void {
-    sessionStorage.clear();
+    localStorage.clear();
     this.router.navigateByUrl('/login');
   }
 }
