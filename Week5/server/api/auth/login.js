@@ -1,14 +1,14 @@
 var fs = require('fs');
 
-module.exports = function(req, res) {
+module.exports = function (req, res) {
     const { username, password } = req.body;
     const users = fs.readFileSync(__dirname + '/../../data/users.json', 'utf-8');
 
-    if (users){
+    if (users) {
         const userJson = JSON.parse(users);
         const userArray = userJson.users;
         const foundUser = userArray.find(user => user.username == username && user.password == password);
-        if (foundUser){
+        if (foundUser) {
             const userToReturn = {
                 username: foundUser.username,
                 birthdate: foundUser.birthdate,
@@ -18,8 +18,8 @@ module.exports = function(req, res) {
             };
             res.status(200).json(userToReturn);
         }
-        else{
-            res.status(401).json({"valid": false});
+        else {
+            res.status(401).json({ "valid": false });
         }
     }
 }

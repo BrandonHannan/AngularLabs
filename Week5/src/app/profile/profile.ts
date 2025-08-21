@@ -19,6 +19,9 @@ export class Profile {
     const storedUserString = localStorage.getItem('loggedInUser');
     if (storedUserString) {
       this.user = JSON.parse(storedUserString);
+      if (!this.user.valid){
+        this.router.navigateByUrl('/login');
+      }
     }
     else{
       this.router.navigateByUrl('/login');

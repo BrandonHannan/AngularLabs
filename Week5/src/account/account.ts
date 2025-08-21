@@ -17,7 +17,13 @@ export class Account implements OnInit{
   ngOnInit(): void {
     const storedUserString = localStorage.getItem('loggedInUser');
     if (storedUserString) {
-      this.user = JSON.parse(storedUserString);
+      const user = JSON.parse(storedUserString);
+      if (user.valid){
+        this.user = JSON.parse(storedUserString);
+      }
+      else {
+        this.router.navigateByUrl('/login');
+      }
     }
     else{
       this.router.navigateByUrl('/login');

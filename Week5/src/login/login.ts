@@ -21,7 +21,10 @@ export class Login implements OnInit{
   ngOnInit() {
     const storedUserString = localStorage.getItem('loggedInUser');
     if (storedUserString) {
-      this.router.navigateByUrl("/account");
+      const user = JSON.parse(storedUserString);
+      if (user.valid){
+        this.router.navigateByUrl("/account");
+      }
     }
   }
 
