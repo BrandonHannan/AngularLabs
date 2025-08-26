@@ -13,9 +13,8 @@ const io = require('socket.io')(http,{
 });
 
 const sockets = require('./socket.js');
+const server = require('./listen.js');
 
 sockets.connect(io, port);
 
-app.use(express.static(__dirname + '/'));
-
-http.listen(port);
+server.listen(app, express, http, port);
