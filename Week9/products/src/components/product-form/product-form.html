@@ -1,0 +1,27 @@
+<div class="container">
+  <h2>{{ isEditMode ? 'Update Product' : 'Add Product' }}</h2>
+  <form (ngSubmit)="saveProduct()">
+    <div class="mb-3">
+      <label for="id" class="form-label">Product ID</label>
+      <input type="number" class="form-control" id="id" [(ngModel)]="product.Id" name="id" required [disabled]="isEditMode">
+    </div>
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" [(ngModel)]="product.Name" name="name" required>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea class="form-control" id="description" [(ngModel)]="product.Description" name="description" required></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="price" class="form-label">Price</label>
+      <input type="number" class="form-control" id="price" [(ngModel)]="product.Price" name="price" required>
+    </div>
+    <div class="mb-3">
+      <label for="units" class="form-label">Units</label>
+      <input type="number" class="form-control" id="units" [(ngModel)]="product.units" name="units" required>
+    </div>
+    <button type="submit" class="btn btn-success">Save Product</button>
+    <a routerLink="/products" class="btn btn-secondary ms-2">Cancel</a>
+  </form>
+</div>
