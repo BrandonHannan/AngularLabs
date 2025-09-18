@@ -7,33 +7,39 @@ const { removeProduct } = require('./remove.js');
 const uri = "mongodb://localhost:27017";
 const client = new MongoClient(uri);
 
-try{
+async function main() {
+  try {
     await client.connect();
     console.log('Connected successfully to MongoDB');
     const db = client.db('mydb');
     const collection = db.collection('products');
+
     // Drop the collection to prevent duplicates on each run
-    try{
+    try {
       await collection.drop();
-    } 
-    catch (err) {
-      if (err.codeName === 'NamespaceNotFound'){
+    } catch (err) {
+      if (err.codeName === 'NamespaceNotFound') {
         console.log('Collection did not exist, skipping drop.');
-      } 
-      else{
+      } else {
         throw err;
       }
     }
+
     // CRUD Operations
     await addProducts(db);
-    await readProducts(db); // Read after adding
+    console.log("First Read: ");
+    var products = await readProducts(db); // Read after adding
+    console.log(products);
     await updateProduct(db);
     await removeProduct(db);
-    await readProducts(db); // Read the final state
-}
-catch (e){
+    console.log("Second Read: ");
+    products = await readProducts(db); // Read the final state
+    console.log(products);
+  } catch (e) {
     console.error(e);
-} 
-finally{
+  } finally {
     await client.close();
+  }
 }
+
+main();
