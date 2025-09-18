@@ -64,12 +64,6 @@ app.post('/products', async (req, res) => {
         const productsCollection = db.collection('products');
         const newProduct = req.body;
 
-        // Check for duplicate custom Id
-        const existingProduct = await productsCollection.findOne({ Id: newProduct.Id });
-        if (existingProduct) {
-            return res.status(400).json({ error: 'Product with this Id already exists.' });
-        }
-
         const result = await productsCollection.insertOne(newProduct);
         res.status(201).json(result);
     } catch (err) {
